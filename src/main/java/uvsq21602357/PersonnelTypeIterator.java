@@ -16,8 +16,8 @@ public abstract class PersonnelTypeIterator implements Iterator<PersonnelType> {
       private PersonnelComposite root;
       
       public PersonnelTypeIterator(final PersonnelComposite compositePersonnel, final Collection<PersonnelType> collection) {
-          this.root = compositePersonnel;
           this.setPersonnelCollection(collection);
+          this.root = compositePersonnel;
           this.getPersonnelCollection().addAll(root.getAllPersonnel());
       }
       
@@ -27,14 +27,24 @@ public abstract class PersonnelTypeIterator implements Iterator<PersonnelType> {
       
       public PersonnelType Suivant() {
           if (!ASuivant()) {
+        	  	System.out.println("Erreur");
                 throw new NoSuchElementException();
           }
-		  PersonnelType typePersonnel = getCollectionItems();
-		  if (typePersonnel.EstUnGroupe()) {
-		     getPersonnelCollection().addAll(((PersonnelComposite) typePersonnel).
-		               getAllPersonnel());
-		  }
-		  return typePersonnel;
+          else {
+        	  PersonnelType typePersonnel = getCollectionItems();
+        	  if(typePersonnel != null) {
+        		  if (typePersonnel.EstUnGroupe() != false) {
+         		     getPersonnelCollection().addAll(((PersonnelComposite) typePersonnel).getAllPersonnel());
+         		  }
+         		  return typePersonnel;
+
+        	  }
+        	  else {
+        		  System.out.println("Erreur");
+        		  return typePersonnel;
+        	  }
+    		 
+          }
     }
     
   

@@ -15,6 +15,7 @@ public class DAOPersonnel extends DAO<Personnel> {
     try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(p.getNom()))) {
       out.writeObject(p);
     } catch (IOException ioe) {
+    	System.out.println("Erreur");
       ioe.printStackTrace();
     }
     return p;
@@ -26,10 +27,13 @@ public class DAOPersonnel extends DAO<Personnel> {
     try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(str))) {
       personnel = (Personnel) in.readObject();
     } catch (ClassNotFoundException  ioe) {
+    	System.out.println("Erreur");
       ioe.printStackTrace();
     } catch (FileNotFoundException e) {
+    	System.out.println("Erreur");
       e.printStackTrace();
     } catch (IOException e) {
+    	System.out.println("Erreur");
       e.printStackTrace();
     }
     return personnel;
@@ -41,6 +45,7 @@ public class DAOPersonnel extends DAO<Personnel> {
     try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(str, false))) {
       out.writeObject(p);
     } catch (IOException ioe) {
+    	System.out.println("Erreur");
       ioe.printStackTrace();
     }
     return p;
@@ -50,11 +55,11 @@ public class DAOPersonnel extends DAO<Personnel> {
   public void supprime(Personnel p) {
 
     File file = new File(p.getNom());
-    boolean deleted = file.delete();
-    if (deleted) {
-      System.out.println("deleted");
+    boolean suppr = file.delete();
+    if (suppr == false) {
+      System.out.println("echec de la suppression");
     } else {
-      System.out.println("not deleted");
+      System.out.println("suppression reussi");
     }
   }
 }

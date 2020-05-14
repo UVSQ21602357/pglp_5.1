@@ -14,10 +14,6 @@ public class Annuaire implements Serializable {
     head = new PersonnelComposite(1);
   }
 
-  /**
-   * Public constructor for singleton.
-   * @return Static reference to the object   
-   **/
   public static Annuaire getInstance() {
     if (ANNUAIRE == null) {
       ANNUAIRE = new Annuaire();

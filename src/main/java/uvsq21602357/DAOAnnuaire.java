@@ -16,6 +16,7 @@ public class DAOAnnuaire extends DAO<Annuaire> {
     try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("Annuaire"))) {
       out.writeObject(ann);
     } catch (IOException ioe) { 
+    	System.out.println("Erreur");
       ioe.printStackTrace();
     }
     return ann;
@@ -28,10 +29,13 @@ public class DAOAnnuaire extends DAO<Annuaire> {
       annuaire = (Annuaire) in.readObject();
     
     } catch (ClassNotFoundException  ioe) {
+    	System.out.println("Erreur");
       ioe.printStackTrace();
     } catch (FileNotFoundException e) {
+    	System.out.println("Erreur");
       e.printStackTrace();
     } catch (IOException e) {
+    	System.out.println("Erreur");
       e.printStackTrace();
     }
     return annuaire;
@@ -43,6 +47,7 @@ public class DAOAnnuaire extends DAO<Annuaire> {
     try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file, false))) {
       out.writeObject(ann);
     } catch (IOException ioe) {
+    	System.out.println("Erreur");
       ioe.printStackTrace();
     }
     return ann;
@@ -51,11 +56,11 @@ public class DAOAnnuaire extends DAO<Annuaire> {
   @Override
   public void supprime(Annuaire ann) {
     File file = new File("Annuaire");
-    boolean deleted = file.delete();
-    if (deleted) {
-      System.out.println("deleted");
+    boolean suppr = file.delete();
+    if (suppr == false) {
+      System.out.println("echec de la suppression");
     } else {
-      System.out.println("not deleted");
+      System.out.println("suppression réussi");
     }
   }
 }
