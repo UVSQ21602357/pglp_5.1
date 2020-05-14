@@ -15,7 +15,7 @@ public class PersonnelComposite  extends PersonnelType implements Iterable<Perso
               this.Personnel = new ArrayList<PersonnelType>();
               this.identifiant = idGroupe;
        }
-       public void remvoe(final PersonnelType personnel) {
+       public void remove(final PersonnelType personnel) {
               this.Personnel.remove(personnel);
        }
     public List<PersonnelType> getAllPersonnel() {
