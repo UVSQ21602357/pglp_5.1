@@ -9,19 +9,19 @@ public final class Personnel extends PersonnelType {
    private String prenom;
    private ArrayList<String> telephone;
    private LocalDate dateNaissance;
-   private String emploi;
+   private String fonction;
    
    public static class PersonelBuilder {
    private String nom;
    private String prenom;
    private ArrayList<String> telephone = null;
    private LocalDate dateNaissance = null;
-   private String emploi;
+   private String Fonction;
    public PersonelBuilder(
-     final String nomPara, final String ValPrenom, final String ValEmploi) {
+     final String nomPara, final String ValPrenom, final String ValFonction) {
       this.nom = nomPara;
       this.prenom = ValPrenom;
-      this.emploi = ValEmploi;
+      this.Fonction = ValFonction;
    }
    public PersonelBuilder dateNaissance(final LocalDate ValDate) {
    this.dateNaissance = ValDate;
@@ -40,7 +40,7 @@ public final class Personnel extends PersonnelType {
    private Personnel(final PersonelBuilder builder) {
    this.nom = builder.nom;
    this.prenom = builder.prenom;
-   this.emploi = builder.emploi;
+   this.fonction = builder.Fonction;
    }
    
    public String getNom() {
@@ -59,8 +59,8 @@ public final class Personnel extends PersonnelType {
    return dateNaissance;
    }
     
-   public String getemploi() {
-   return emploi;
+   public String getFonction() {
+   return fonction;
    }
     
    @Override
